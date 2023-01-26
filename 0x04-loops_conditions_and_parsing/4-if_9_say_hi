@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# A script that displays Best school 10 times.
+# A script that displays Best school 10 times with hi after the ninth.
 n=1
 while [ $n -le 10 ]
 do
