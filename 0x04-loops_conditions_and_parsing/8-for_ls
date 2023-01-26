@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# A script that displays contents in a folder.
+for name in *
+do
+	echo "$name" | cut -f 2- -d '-'
+done
