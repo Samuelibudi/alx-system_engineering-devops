@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#A script showing process containing bash word.
+# shellcheck disable=SC2009
+ps aux --forest | grep bash
