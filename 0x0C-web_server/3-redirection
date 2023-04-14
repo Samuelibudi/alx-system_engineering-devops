@@ -4,6 +4,15 @@
 
 sudo apt-get -y update
 sudo apt-get -y install nginx
-sudo echo "Hello World!" > /var/www/html/index.nginx-debian.html
+sudo tee /var/www/html/index.nginx-debian.html > /dev/null <<EOF
+<html>
+<head>
+	<title>Hello World!</title>
+</head>
+<body>
+	<h1>Hello World!</h1>
+</body>
+</html>
+EOF
 sudo sed -i "s/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/Samuelibudi permanent;/" /etc/nginx/sites-available/default
 sudo service nginx start
