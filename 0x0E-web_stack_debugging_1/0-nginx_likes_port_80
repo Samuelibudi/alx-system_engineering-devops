@@ -1,4 +1,12 @@
 #!/usr/bin/env bash
 # Script that sets the port 80
-sudo sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
-sudo service nginx restart
+ip_list=$(ip -4 addr | grep inet | awk '{print $2}' | cut -d '/' -f1)
+for ip in $ip_list
+do
+	    sed -i "s/listen 80;/listen $ip:80;/" /etc/nginx/sites-enabled/default
+    done
+
+sudo sed -i "/listen \[::\]:/d" /etc/nginx/sites-enabled/default
+
+sudo systemctl restart nginx
+
